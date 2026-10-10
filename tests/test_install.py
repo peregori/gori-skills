@@ -28,14 +28,14 @@ class InstallTests(unittest.TestCase):
     def test_plan_is_read_only_and_core_has_named_phases(self):
         result = self.run_install()
         self.assertEqual(result.returncode, 0, result.stderr)
-        for name in ("gori-mode", "gori-triage", "gori-grill", "gori-domain-model", "gori-to-spec", "gori-implement", "gori-code-review", "gori-verify", "gori-release"):
+        for name in ("gori-mode", "gori-triage", "gori-grill", "gori-domain-model", "gori-design", "gori-to-spec", "gori-implement", "gori-code-review", "gori-verify", "gori-release"):
             self.assertIn(name, result.stdout)
         self.assertFalse((self.repo / ".agents").exists())
 
     def test_apply_is_repeatable(self):
         first = self.run_install("--apply")
         self.assertEqual(first.returncode, 0, first.stderr)
-        for name in ("gori-mode", "gori-adopt", "gori-triage", "gori-grill", "gori-domain-model", "gori-to-spec", "gori-implement", "gori-code-review", "gori-create-verification", "gori-verify", "gori-maintain-verification", "gori-release"):
+        for name in ("gori-mode", "gori-adopt", "gori-triage", "gori-grill", "gori-domain-model", "gori-design", "gori-to-spec", "gori-implement", "gori-code-review", "gori-create-verification", "gori-verify", "gori-maintain-verification", "gori-release"):
             self.assertTrue((self.repo / ".agents" / "skills" / name / "SKILL.md").is_file())
         second = self.run_install("--apply")
         self.assertEqual(second.returncode, 0, second.stderr)

@@ -21,12 +21,17 @@ flowchart LR
     G --> H[gori-release]
     H --> I[User updates board]
     B -. existing repo adoption .-> J[gori-adopt]
+    B -. selected UI work .-> U[gori-design: guidance]
+    J -. UI design context .-> U
+    U -. visual acceptance .-> D
+    F -. UI work .-> V[gori-design: visual review]
+    V --> L
     J -. missing shared vocabulary .-> M
     J -. missing driver .-> K[gori-create-verification]
     G -. map or driver drift .-> L
 ```
 
-Skip a phase when its work is already evidenced; record why. `Inbox` routes through triage of the selected card, then only the missing decisions and spec work. Before every selected task ships, Gori compares the affected feature-map entries and verification driver with final source, updates them when needed, and drives the affected journey. A failed review or verification returns to implementation and repeats affected checks. The user owns task selection, issue creation and Project card changes. Gori may recommend a status change but never makes it.
+Skip a phase when its work is already evidenced; record why. `Inbox` routes through triage of the selected card, then only the missing decisions and spec work. For UI work, `gori-design` establishes or reads the product's visual guidance, then checks and maintains it for the affected screen during review. Before every selected task ships, Gori compares the affected feature-map entries and verification driver with final source, updates them when needed, and drives the affected journey. A failed review or verification returns to implementation and repeats affected checks. The user owns task selection, issue creation and Project card changes. Gori may recommend a status change but never makes it.
 
 For a board with `Inbox`, `Needs Grill`, `In Progress`, `In Review` and `Done`, `gori-mode` maps those Status values to the route above. A separate Phase field may identify product areas rather than workflow state. Other repositories can use different Status values. Gori reads each repo's actual board and canonical context instead of imposing columns or a new queue.
 
@@ -37,6 +42,7 @@ For a board with `Inbox`, `Needs Grill`, `In Progress`, `In Review` and `Done`, 
 | `gori-triage` | Check the selected untriaged issue or PR against source and route it |
 | `gori-grill` | Resolve missing decisions, commonly `Needs Grill` |
 | `gori-domain-model` | Settle consequential domain terms in the repo's existing context |
+| `gori-design` | Establish and maintain the UI design contract; review affected screens with realistic content |
 | `gori-to-spec` | Record settled outcomes and proof in the existing issue or context |
 | `gori-implement` | Build vertical slices, commonly `In Progress` |
 | `gori-code-review` | Review intent and code separately, commonly `In Review` |
@@ -47,9 +53,13 @@ For a board with `Inbox`, `Needs Grill`, `In Progress`, `In Review` and `Done`, 
 
 `gtm` and `vercel-resend-default` are optional, unrelated skills. Matt's separate plugin is not required for the Gori route. Gori does not copy every specialist Matt or pstack skill.
 
+The design route is one conditional Gori skill. It draws on evidence-based design extraction, focused UI drift review and realistic content stress tests without installing six overlapping skills, imposing a Tailwind/React stack, or fetching changing design rules on every task.
+
 ## Enter an existing project
 
 Run `gori-adopt` once to inventory the repo's own task authority, vocabulary, feature map, executable verification and release gates. An absent glossary is fine when the canonical context already explains the terms; add a small glossary only if shared ambiguity affects behavior. If the feature map is absent, seed three to five source-grounded critical user paths in the existing docs location. If a real user-path driver is absent, create the smallest runnable one and prove one mapped journey. Repair existing maps or scripts only for demonstrated drift. This setup does not triage the backlog.
+
+For a UI product, adoption also checks its existing design guidance, tokens, components and representative rendered screens. If there is no equivalent design reference and the direction can be grounded in evidence, create a concise `DESIGN.md` in the repo's normal docs location and link it from the entry point. Leave unclear brand choices open for the user instead of inventing them. Later UI tasks reuse the reference and update it only when an accepted shared rule changes. External examples, such as [Kargul Studio's Sales CRM](https://github.com/kargulstudio/sales-crm), can inform alignment and spacing analysis without imposing their components, palette or density on another product.
 
 When you select an existing untriaged card, `gori-triage` checks its claim and current source, then routes genuine decisions to `gori-grill` and missing acceptance to `gori-to-spec`. An `In Progress` card with no usable spec still needs that spec. The issue and repo rules determine what Codex can edit; Project cards remain read-only. Each T3 thread needs an explicitly selected worktree if you want isolation; a new thread does not create one automatically.
 
@@ -63,7 +73,7 @@ python3 ~/gori-skills/scripts/install.py /absolute/path/to/product
 python3 ~/gori-skills/scripts/install.py /absolute/path/to/product --apply
 ```
 
-The first installer run prints a read-only plan. The second copies the twelve core skills into `.agents/skills/`. Use `--all` before `--apply` to include the two optional skills, or name a skill. The installer includes `gori-mode`'s phase dependencies and refuses to overwrite differing product copies. Review and commit installed files in the product repo.
+The first installer run prints a read-only plan. The second copies the thirteen core skills into `.agents/skills/`. Use `--all` before `--apply` to include the two optional skills, or name a skill. The installer includes `gori-mode`'s phase dependencies and refuses to overwrite differing product copies. Review and commit installed files in the product repo.
 
 Add one pointer to the product's existing `AGENTS.md` when needed: “For selected product work, use `.agents/skills/gori-mode`; the repo's canonical context and release gates remain authoritative.” [Codex's skill documentation](https://learn.chatgpt.com/docs/build-skills) describes `.agents/skills/` as a repository location. A same-named global copy may also appear in the selector. Installing snapshots does not create a second backlog or replace product scripts.
 

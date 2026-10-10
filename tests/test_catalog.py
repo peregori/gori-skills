@@ -15,6 +15,7 @@ class CatalogTests(unittest.TestCase):
             "gori-triage",
             "gori-grill",
             "gori-domain-model",
+            "gori-design",
             "gori-to-spec",
             "gori-implement",
             "gori-code-review",
