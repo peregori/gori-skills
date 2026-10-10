@@ -1,0 +1,4 @@
+interface:
+  display_name: "GTM"
+  short_description: "ICP research, outbound plays, and weekly GTM"
+  default_prompt: "Use $gtm for this project: resume our ICP and market research, recommend the strongest outbound plays and content ideas, and prepare this week's review."
