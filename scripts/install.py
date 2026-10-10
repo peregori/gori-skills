@@ -11,11 +11,18 @@ from pathlib import Path
 
 
 SOURCE = Path(__file__).resolve().parent.parent / "skills"
-CORE = ("factory-workflow", "matt-engineering", "product-verification")
-DEPENDENCIES = {
-    "factory-workflow": ("matt-engineering", "product-verification"),
-    "matt-engineering": ("product-verification",),
-}
+CORE = (
+    "gori-mode",
+    "gori-adopt",
+    "gori-grill",
+    "gori-to-spec",
+    "gori-implement",
+    "gori-code-review",
+    "gori-create-verification",
+    "gori-verify",
+    "gori-maintain-verification",
+    "gori-release",
+)
 
 
 def same_tree(source: Path, target: Path) -> bool:
@@ -44,8 +51,8 @@ def main() -> int:
     unknown = selected - available
     if unknown:
         parser.error("unknown skill(s): " + ", ".join(sorted(unknown)))
-    for name in tuple(selected):
-        selected.update(DEPENDENCIES.get(name, ()))
+    if selected.intersection(CORE):
+        selected.update(CORE)
 
     repo = args.repo.expanduser().resolve()
     result = subprocess.run(

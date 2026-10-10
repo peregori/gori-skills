@@ -25,37 +25,49 @@ class InstallTests(unittest.TestCase):
             check=False,
         )
 
-    def test_plan_is_read_only_and_core_has_both_methods(self):
+    def test_plan_is_read_only_and_core_has_named_phases(self):
         result = self.run_install()
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("matt-engineering", result.stdout)
-        self.assertIn("product-verification", result.stdout)
+        for name in ("gori-mode", "gori-grill", "gori-to-spec", "gori-implement", "gori-code-review", "gori-verify", "gori-release"):
+            self.assertIn(name, result.stdout)
         self.assertFalse((self.repo / ".agents").exists())
 
     def test_apply_is_repeatable(self):
         first = self.run_install("--apply")
         self.assertEqual(first.returncode, 0, first.stderr)
-        for name in ("factory-workflow", "matt-engineering", "product-verification"):
+        for name in ("gori-mode", "gori-adopt", "gori-grill", "gori-to-spec", "gori-implement", "gori-code-review", "gori-create-verification", "gori-verify", "gori-maintain-verification", "gori-release"):
             self.assertTrue((self.repo / ".agents" / "skills" / name / "SKILL.md").is_file())
         second = self.run_install("--apply")
         self.assertEqual(second.returncode, 0, second.stderr)
-        self.assertIn("already installed: factory-workflow", second.stdout)
+        self.assertIn("already installed: gori-mode", second.stdout)
 
     def test_existing_edit_blocks_all_new_copies(self):
-        target = self.repo / ".agents" / "skills" / "product-verification"
+        target = self.repo / ".agents" / "skills" / "gori-verify"
         target.mkdir(parents=True)
         (target / "SKILL.md").write_text("local edit\n")
         result = self.run_install("--all", "--apply")
         self.assertEqual(result.returncode, 2)
         self.assertIn("Refusing to overwrite", result.stderr)
         self.assertEqual((target / "SKILL.md").read_text(), "local edit\n")
-        self.assertFalse((self.repo / ".agents" / "skills" / "factory-workflow").exists())
+        self.assertFalse((self.repo / ".agents" / "skills" / "gori-mode").exists())
 
     def test_installs_only_requested_optional_skill(self):
         result = self.run_install("gtm", "--apply")
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue((self.repo / ".agents" / "skills" / "gtm" / "SKILL.md").is_file())
-        self.assertFalse((self.repo / ".agents" / "skills" / "factory-workflow").exists())
+        self.assertFalse((self.repo / ".agents" / "skills" / "gori-mode").exists())
+
+    def test_named_phase_keeps_router_and_peer_links_available(self):
+        result = self.run_install("gori-verify", "--apply")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue((self.repo / ".agents" / "skills" / "gori-mode" / "SKILL.md").is_file())
+        self.assertTrue((self.repo / ".agents" / "skills" / "gori-maintain-verification" / "SKILL.md").is_file())
+
+    def test_all_includes_optional_skills(self):
+        result = self.run_install("--all", "--apply")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue((self.repo / ".agents" / "skills" / "gtm" / "SKILL.md").is_file())
+        self.assertTrue((self.repo / ".agents" / "skills" / "vercel-resend-default" / "SKILL.md").is_file())
 
     def test_refuses_symlinked_skill_destination(self):
         outside = Path(self.directory.name) / "outside"

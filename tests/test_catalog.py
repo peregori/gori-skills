@@ -8,6 +8,21 @@ SKILLS = ROOT / "skills"
 
 
 class CatalogTests(unittest.TestCase):
+    def test_router_names_every_core_phase(self):
+        router = (SKILLS / "gori-mode" / "SKILL.md").read_text()
+        for phase in (
+            "gori-adopt",
+            "gori-grill",
+            "gori-to-spec",
+            "gori-implement",
+            "gori-code-review",
+            "gori-create-verification",
+            "gori-verify",
+            "gori-maintain-verification",
+            "gori-release",
+        ):
+            self.assertIn(f"../{phase}/SKILL.md", router, phase)
+
     def test_each_skill_has_identity_and_resolved_local_links(self):
         folders = sorted(path for path in SKILLS.iterdir() if path.is_dir())
         self.assertGreaterEqual(len(folders), 5)
