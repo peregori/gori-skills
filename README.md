@@ -79,6 +79,8 @@ python3 ~/gori-skills/scripts/install.py /absolute/path/to/product --apply
 
 The first installer run prints a read-only plan. The second copies the thirteen core skills into `.agents/skills/`. Use `--all` before `--apply` to include the two optional skills, or name a skill. The installer includes `gori-mode`'s phase dependencies and refuses to overwrite differing product copies. Review and commit installed files in the product repo.
 
+For one-request setup or refresh, ask from this source checkout: “Use gori-mode to adopt Gori in `/absolute/path/to/product`” or “Refresh Gori in `/absolute/path/to/product`.” `gori-adopt` checks the installer plan, reconciles reviewed skill changes and the product's `AGENTS.md` pointer, then checks only affected context and verification guidance. A refresh does not rerun the full adoption audit just because skill text changed. The installer itself remains safe for read-only planning and first installs; it does not overwrite existing copies.
+
 Add one pointer to the product's existing `AGENTS.md` when needed: “For selected product work, use `.agents/skills/gori-mode`; the repo's canonical context and release gates remain authoritative.” [Codex's skill documentation](https://learn.chatgpt.com/docs/build-skills) describes `.agents/skills/` as a repository location. A same-named global copy may also appear in the selector. Installing snapshots does not create a second backlog or replace product scripts.
 
 The earlier `factory-workflow`, `matt-engineering` and `product-verification` directories are superseded. The installer does not delete them from repositories that adopted the first release. Reconcile local edits and remove those directories and their old pointer before using `gori-mode` there.
