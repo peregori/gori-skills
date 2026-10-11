@@ -63,6 +63,10 @@ For a UI product, adoption also checks its existing design guidance, tokens, com
 
 When you select an existing untriaged card, `gori-triage` checks its claim and current source, then routes genuine decisions to `gori-grill` and missing acceptance to `gori-to-spec`. An `In Progress` card with no usable spec still needs that spec. The issue and repo rules determine what Codex can edit; Project cards remain read-only. Each T3 thread needs an explicitly selected worktree if you want isolation; a new thread does not create one automatically.
 
+## Delivery cost
+
+A worktree isolates concurrent work and costs only local disk. A pull request spends hosted CI, preview and deployment budget that the repo's owner pays for. Gori keeps the two apart: it works and commits locally, brings the branch up to date with its base, runs the repo's full local gate (and a CI-equivalent one when the repo has it) on the final tree, and pushes once. A red hosted check is reproduced and fixed locally, not by pushing again. The product repo's own delivery rule decides how many tasks share a branch or a pull request, the merge method, and when a merged worktree may be removed; without one, Gori defaults to a worktree per concurrent task and one pull request per finished task.
+
 ## Install into one product repo
 
 Clone once. Python 3 and Git are the only installer requirements.
