@@ -1,94 +1,86 @@
-# gori-skills
+# Gori Skills
 
-One entry point for a user-selected product task. `gori-mode` reads the repository's existing issue, board Status, context and gates, then loads only the phase skills needed. It combines adapted [Matt Pocock engineering skills](https://github.com/mattpocock/skills) with [Lauren Tan's executable verification approach](https://github.com/backnotprop/pstack). These are Gori adaptations, not upstream releases. [Third-party notices](THIRD_PARTY_NOTICES.md) preserve attribution.
+**A practical workflow for shipping product work with Codex.** Gori Skills is a collection of agent skills that takes one task you choose from idea to reviewed, verified change. It follows the product repository's existing decisions, task ownership, and release gates instead of bringing its own backlog.
 
-## The route
+Created and maintained by **[Pere Gregori](https://github.com/peregori)**, a developer building tools for more reliable product delivery. See [Pere's work on GitHub](https://github.com/peregori) or [get in touch on LinkedIn](https://www.linkedin.com/in/peregregori/).
 
-```mermaid
-flowchart LR
-    A[User selects existing task] --> B[gori-mode reads repo and Status]
-    B --> T[gori-triage for selected untriaged task]
-    T --> C[gori-grill when decisions are missing]
-    T --> D
-    B --> C
-    C --> D[gori-to-spec]
-    C -. ambiguous domain terms .-> M[gori-domain-model]
-    M --> D
-    D --> E[gori-implement]
-    E --> F[gori-code-review]
-    F --> L[gori-maintain-verification]
-    L --> G[gori-verify]
-    G --> H[gori-release]
-    H --> I[User updates board]
-    B -. existing repo adoption .-> J[gori-adopt]
-    B -. selected UI work .-> U[gori-design: guidance]
-    J -. UI design context .-> U
-    U -. visual acceptance .-> D
-    F -. UI work .-> V[gori-design: visual review]
-    V --> L
-    J -. missing shared vocabulary .-> M
-    J -. missing driver .-> K[gori-create-verification]
-    G -. map or driver drift .-> L
+## What it does
+
+Start with `gori-mode`. It reads the selected task and the repository's own `AGENTS.md`, then uses only the steps that task needs:
+
+1. Check the request against current product behavior and resolve missing decisions.
+2. Write observable acceptance criteria, then implement in small, verifiable slices.
+3. Review the complete change against the original request and code quality.
+4. Update affected verification guidance, prove the user journey, and follow the repo's release gates.
+
+Gori can also adopt an existing product repository by mapping its current context and verification. The owner keeps control of task selection, issue creation, and GitHub Project cards. Gori reports recommended card changes for the owner to make.
+
+For example, ask **“Use gori-mode for issue #42.”** It checks the issue against current source, settles any missing acceptance, and returns the implemented change with review and verification evidence under that repo's rules.
+
+## Install
+
+You need Python 3, Git, and an existing product Git repository. Clone this source once, then run the installer against your product:
+
+```sh
+git clone https://github.com/peregori/gori-skills.git
+python3 gori-skills/scripts/install.py /absolute/path/to/product
+python3 gori-skills/scripts/install.py /absolute/path/to/product --apply
 ```
 
-Skip a phase when its work is already evidenced; record why. `Inbox` routes through triage of the selected card, then only the missing decisions and spec work. For UI work, `gori-design` establishes or reads the product's visual guidance, then checks and maintains it for the affected screen during review. Before every selected task ships, Gori compares the affected feature-map entries and verification driver with final source, updates them when needed, and drives the affected journey. A failed review or verification returns to implementation and repeats affected checks. The user owns task selection, issue creation and Project card changes. Gori may recommend a status change but never makes it.
+The first command from the installer shows a read-only plan. `--apply` copies the core skills into the product's `.agents/skills/` directory. The installer refuses to overwrite a differing copy. Review and commit the installed files in the product repo. Use `--all` to include the optional skills, or pass an optional skill name to install it alone.
 
-For a board with `Inbox`, `Needs Grill`, `In Progress`, `In Review` and `Done`, `gori-mode` maps those Status values to the route above. A separate Phase field may identify product areas rather than workflow state. Other repositories can use different Status values. Gori reads each repo's actual board and canonical context instead of imposing columns or a new queue.
+Add this pointer to the product's existing `AGENTS.md` if it needs one:
 
-| Skill | Phase or trigger |
+> For selected product work, use `.agents/skills/gori-mode`; this repository's canonical context and release gates remain authoritative.
+
+Then ask Codex to **“Use gori-mode to adopt Gori in this repo”** for initial setup, or **“Use gori-mode for [selected task]”** to work on one task. Installed skills are snapshots: updates to this repository do not silently change product copies. For a reviewed refresh, ask Codex to **“Refresh Gori in this repo.”**
+
+If your product has the earlier `factory-workflow`, `matt-engineering`, or `product-verification` folders, review local changes and replace their old pointer before using `gori-mode`. The installer does not delete those folders.
+
+## Included skills
+
+The core workflow is installed by default. The other skills are available when requested.
+
+<!-- BEGIN GENERATED SKILLS -->
+
+### Core workflow
+
+| Skill | What it helps with |
 | --- | --- |
-| `gori-mode` | Single router for the selected task |
-| `gori-adopt` | One-time existing-repo setup and contract check |
-| `gori-triage` | Check the selected untriaged issue or PR against source and route it |
-| `gori-grill` | Resolve missing decisions, commonly `Needs Grill` |
-| `gori-domain-model` | Settle consequential domain terms in the repo's existing context |
-| `gori-design` | Establish and maintain the UI design contract; review affected screens with realistic content |
-| `gori-to-spec` | Record settled outcomes and proof in the existing issue or context |
-| `gori-implement` | Build vertical slices, commonly `In Progress` |
-| `gori-code-review` | Review intent and code separately, commonly `In Review` |
-| `gori-create-verification` | Add a real user-path driver only when absent |
-| `gori-verify` | Run focused checks and the affected real journey |
-| `gori-maintain-verification` | Reconcile affected map and harness before release; full audit only when requested |
-| `gori-release` | Follow the repo's authorized PR, CI and production gates |
+| [`gori-mode`](skills/gori-mode/SKILL.md) | Route one selected repository task through triage, decisions, spec, implementation, review, user-path verification, and release gates. |
+| [`gori-adopt`](skills/gori-adopt/SKILL.md) | Adopt or refresh Gori in an existing product repository using its task authority, context, Git rules, and verification gates. |
+| [`gori-triage`](skills/gori-triage/SKILL.md) | Assess one user-selected existing issue or PR against current product behavior and route it to decisions, spec, implementation, or a concrete blocker. |
+| [`gori-grill`](skills/gori-grill/SKILL.md) | Resolve missing product decisions on a selected Inbox or Needs Grill issue before writing its spec. |
+| [`gori-domain-model`](skills/gori-domain-model/SKILL.md) | Resolve consequential domain vocabulary and relationships while adopting an existing repo or specifying a selected task. |
+| [`gori-design`](skills/gori-design/SKILL.md) | Establish and maintain product-specific UI design guidance, then check affected screens during selected UI work. |
+| [`gori-to-spec`](skills/gori-to-spec/SKILL.md) | Turn settled decisions for a selected issue into an implementation-ready spec with observable acceptance and proof. |
+| [`gori-implement`](skills/gori-implement/SKILL.md) | Implement one selected task in verifiable vertical slices, using bug reproduction and behavior tests where useful. |
+| [`gori-code-review`](skills/gori-code-review/SKILL.md) | Review a selected task's full diff against the original request and repository standards on separate axes. |
+| [`gori-create-verification`](skills/gori-create-verification/SKILL.md) | Create a repo-local executable user-path verification contract when an existing product has none. |
+| [`gori-verify`](skills/gori-verify/SKILL.md) | Prove a selected change through relevant automated checks and the affected real user journey, with revision-bound evidence. |
+| [`gori-maintain-verification`](skills/gori-maintain-verification/SKILL.md) | Reconcile affected feature maps and drivers with final source before each task ships, repairing drift when found. |
+| [`gori-release`](skills/gori-release/SKILL.md) | Carry a reviewed and verified task through the repository's authorized PR, CI, deployment and production gates. |
 
-`gtm` and `vercel-resend-default` are optional, unrelated skills. Matt's separate plugin is not required for the Gori route. Gori does not copy every specialist Matt or pstack skill.
+### Optional
 
-The design route is one conditional Gori skill. It draws on evidence-based design extraction, focused UI drift review and realistic content stress tests without installing six overlapping skills, imposing a Tailwind/React stack, or fetching changing design rules on every task.
+| Skill | What it helps with |
+| --- | --- |
+| [`gtm`](skills/gtm/SKILL.md) | Define and refine ICPs, research reachable markets, qualify prospects, and develop signal-based outbound plays and content through a repeatable, project-independent GTM workflow. |
+| [`vercel-resend-default`](skills/vercel-resend-default/SKILL.md) | Record or verify a repo's chosen Vercel-managed Resend email setup when the user selects that provider path. |
 
-## Enter an existing project
+<!-- END GENERATED SKILLS -->
 
-Run `gori-adopt` once to inventory the repo's own task authority, vocabulary, feature map, executable verification and release gates. An absent glossary is fine when the canonical context already explains the terms; add a small glossary only if shared ambiguity affects behavior. If the feature map is absent, seed three to five source-grounded critical user paths in the existing docs location. If a real user-path driver is absent, create the smallest runnable one and prove one mapped journey. Repair existing maps or scripts only for demonstrated drift. This setup does not triage the backlog.
+## Ownership and attribution
 
-For a UI product, adoption also checks its existing design guidance, tokens, components and representative rendered screens. If there is no equivalent design reference and the direction can be grounded in evidence, create a concise `DESIGN.md` in the repo's normal docs location and link it from the entry point. Leave unclear brand choices open for the user instead of inventing them. Later UI tasks reuse the reference and update it only when an accepted shared rule changes. External examples, such as [Kargul Studio's Sales CRM](https://github.com/kargulstudio/sales-crm), can inform alignment and spacing analysis without imposing their components, palette or density on another product.
+Gori is Pere Gregori's maintained adaptation and synthesis. Some skills draw on work by [Matt Pocock](https://github.com/mattpocock/skills), [Lauren Tan and pstack](https://github.com/backnotprop/pstack), and other credited authors. These are Gori versions, not upstream releases or endorsements. [Third-party notices](THIRD_PARTY_NOTICES.md) give the exact sources and licenses. The repository is [MIT licensed](LICENSE).
 
-When you select an existing untriaged card, `gori-triage` checks its claim and current source, then routes genuine decisions to `gori-grill` and missing acceptance to `gori-to-spec`. An `In Progress` card with no usable spec still needs that spec. The issue and repo rules determine what Codex can edit; Project cards remain read-only. Each T3 thread needs an explicitly selected worktree if you want isolation; a new thread does not create one automatically.
+## Keep this README current
 
-## Delivery cost
-
-A worktree isolates concurrent work and costs only local disk. A pull request spends hosted CI, preview and deployment budget that the repo's owner pays for. Gori keeps the two apart: it works and commits locally, brings the branch up to date with its base, runs the repo's full local gate (and a CI-equivalent one when the repo has it) on the final tree, and pushes once. A red hosted check is reproduced and fixed locally, not by pushing again. The product repo's own delivery rule decides how many tasks share a branch or a pull request, the merge method, and when a merged worktree may be removed; without one, Gori defaults to a worktree per concurrent task and one pull request per finished task.
-
-## Install into one product repo
-
-Clone once. Python 3 and Git are the only installer requirements.
+The skill table above is generated from the manifests under `skills/` and the installer's core list. After changing either, run:
 
 ```sh
-git clone https://github.com/peregori/gori-skills.git ~/gori-skills
-python3 ~/gori-skills/scripts/install.py /absolute/path/to/product
-python3 ~/gori-skills/scripts/install.py /absolute/path/to/product --apply
-```
-
-The first installer run prints a read-only plan. The second copies the thirteen core skills into `.agents/skills/`. Use `--all` before `--apply` to include the two optional skills, or name a skill. The installer includes `gori-mode`'s phase dependencies and refuses to overwrite differing product copies. Review and commit installed files in the product repo.
-
-For one-request setup or refresh, ask from this source checkout: “Use gori-mode to adopt Gori in `/absolute/path/to/product`” or “Refresh Gori in `/absolute/path/to/product`.” `gori-adopt` checks the installer plan, reconciles reviewed skill changes and the product's `AGENTS.md` pointer, then checks only affected context and verification guidance. A refresh does not rerun the full adoption audit just because skill text changed. The installer itself remains safe for read-only planning and first installs; it does not overwrite existing copies.
-
-Add one pointer to the product's existing `AGENTS.md` when needed: “For selected product work, use `.agents/skills/gori-mode`; the repo's canonical context and release gates remain authoritative.” [Codex's skill documentation](https://learn.chatgpt.com/docs/build-skills) describes `.agents/skills/` as a repository location. A same-named global copy may also appear in the selector. Installing snapshots does not create a second backlog or replace product scripts.
-
-The earlier `factory-workflow`, `matt-engineering` and `product-verification` directories are superseded. The installer does not delete them from repositories that adopted the first release. Reconcile local edits and remove those directories and their old pointer before using `gori-mode` there.
-
-## Verify this package
-
-```sh
+python3 scripts/update_readme.py
 python3 -m unittest discover -s tests -v
 ```
 
-The tests cover read-only planning, dependency selection, repeat installation, conflict protection and catalog links. Validate changed manifests with Codex's `skill-creator` validator when available. Inspect the full public diff for machine paths, product data and secrets before publishing. Runtime routing remains a product-level claim until a selected task exercises the phases against its repo and board.
+CI runs `python3 scripts/update_readme.py --check` and fails if the committed table has drifted. The introduction and usage guidance are edited by a person when the product changes; the catalog needs no hand-maintained copy.

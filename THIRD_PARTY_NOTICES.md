@@ -6,4 +6,4 @@
 
 `gori-design` is an original synthesis informed by [Julien Thibeaut's UI skills](https://github.com/ibelick/ui-skills) at `71409d571283b6e6a5f59acb65c0957a19c8e7e4`, [Emil Kowalski's design skills](https://github.com/emilkowalski/skills) at `e8a175de22ae1e49370fc144c1f3bb9aeedf988d`, and [Vercel's web design guidelines skill](https://github.com/vercel-labs/agent-skills) at `063bee94c3f4df8453406c830b0a7df0f2860278`. Their full skill instructions are not bundled. The upstream [Julien Thibeaut MIT license](third_party/ibelick/LICENSE) and [Emil Kowalski MIT license](third_party/emil/LICENSE) are preserved for attribution.
 
-The skills in this repository are adapted for the owner's task, GitHub Project, and release authority boundaries. They are not upstream releases or endorsed by the upstream authors.
+Gori Skills is maintained by [Pere Gregori](https://github.com/peregori). The adapted skills follow the product owner's task, GitHub Project, and release authority boundaries. They are not upstream releases or endorsed by the upstream authors.

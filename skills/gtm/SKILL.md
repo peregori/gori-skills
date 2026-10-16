@@ -5,6 +5,8 @@ description: Define and refine ICPs, research reachable markets, qualify prospec
 
 # GTM
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 Run marketing from the founder's laptop through a repeatable research, decision, preparation, and learning cycle. Help the founder decide whom to approach, why they fit, why now, and what useful offer or idea to test. Produce inspectable evidence and concrete recommendations. Content is one output of this system.
 
 ## Find the project

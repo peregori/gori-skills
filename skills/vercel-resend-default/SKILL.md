@@ -5,6 +5,8 @@ description: "Record or verify a repo's chosen Vercel-managed Resend email setup
 
 # Vercel-managed Resend
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 Read the repo's `AGENTS.md` and canonical context. Confirm that Vercel-managed Resend is the selected provider path; an existing different provider decision takes precedence. Search current email configuration and documentation before changing either.
 
 When the decision is authorized, record it once in the repo's canonical engineering context. The integration command is `vercel integration add resend`; the app should receive its `RESEND_API_KEY` through Vercel-managed configuration. Keep credentials out of Git and browser code. Update only the repo's existing verification recipe and relevant environment contract; do not create a parallel task or memory file.

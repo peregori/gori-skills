@@ -5,6 +5,8 @@ description: Route one selected repository task through triage, decisions, spec,
 
 # Gori mode
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 Read the repo's `AGENTS.md`, canonical context, selected request or issue, current source and Git state. The user selects work. If the repo uses a Project, match the selected issue to its exact card by issue URL or item ID, then read its **Status** and ownership; a thematic Phase field is not workflow status. If no card matches, say so and follow the repo's direct-task rule. Read issue labels according to the tracker contract; they do not override ownership. The board guides routing, while the issue, source, and repo gates define acceptance. Never create tasks or change Project cards or fields. Recommend status changes in the handoff for the user to apply.
 
 For a nontrivial task, keep a short phase checklist in the existing issue, evidence location, or conversation. Record each phase as done, pending, blocked, or skipped with a reason. Load only the linked skill for the current phase. Continue an authorized task across phases even if the user has not moved its card. Recheck the original request at review; a slice or spec cannot silently narrow it.

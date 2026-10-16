@@ -5,6 +5,8 @@ description: Establish and maintain product-specific UI design guidance, then ch
 
 # Keep the product's UI coherent
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 Read the repo's `AGENTS.md` and its existing design source of truth. Use this phase during UI product adoption, before a selected UI change, and again when reviewing that change. Load only the affected surfaces; do not audit the whole product as routine maintenance.
 
 1. **Find the actual system.** Trace the affected screen through its rendered layout, theme tokens, shared primitives, variants and neighboring screens. Inspect representative desktop and narrow layouts when browser access permits. An explicit product decision outranks an observed pattern; repeated implementation is evidence of current practice, not proof of intended brand. For user-supplied visual references, record which relationships to borrow and which to leave behind. Treat outside products as examples of alignment, density and hierarchy, never as a token or component source to copy.

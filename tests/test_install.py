@@ -37,6 +37,8 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(first.returncode, 0, first.stderr)
         for name in ("gori-mode", "gori-adopt", "gori-triage", "gori-grill", "gori-domain-model", "gori-design", "gori-to-spec", "gori-implement", "gori-code-review", "gori-create-verification", "gori-verify", "gori-maintain-verification", "gori-release"):
             self.assertTrue((self.repo / ".agents" / "skills" / name / "SKILL.md").is_file())
+        installed_router = (self.repo / ".agents" / "skills" / "gori-mode" / "SKILL.md").read_text()
+        self.assertIn("maintained by [Pere Gregori](https://github.com/peregori)", installed_router)
         second = self.run_install("--apply")
         self.assertEqual(second.returncode, 0, second.stderr)
         self.assertIn("already installed: gori-mode", second.stdout)

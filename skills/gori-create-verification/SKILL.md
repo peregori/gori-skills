@@ -5,6 +5,8 @@ description: Create a repo-local executable user-path verification contract when
 
 # Create executable product verification
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 1. Inspect the repo's entry point, current scripts, tests, CI, browser or CLI recipes, release gates and primary user surface. Run the existing startup and checks before deciding what is missing.
 2. Select one critical journey with its real user entry, prerequisites, actions, observable result and side effects. Reuse the repo's package manager and harness. Add no dependency without a concrete need.
 3. Add the smallest repo-local driver and source-grounded flow map in its existing verification location. If none exists, add one thin entry point and start with the top three to five paths. Do not create a second task queue or memory layout.

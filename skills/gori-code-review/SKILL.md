@@ -5,6 +5,8 @@ description: Review a selected task's full diff against the original request and
 
 # Review the full change
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 Pin the base commit and inspect committed, staged, unstaged and untracked changes. Read the original request, later decisions, issue and repo standards. Disclose whether the pass is self-review or independent review.
 
 1. **Intent:** For every requested outcome, name its implementation and evidence, or mark it partial, missing or out of scope. Identify work the request did not authorize.

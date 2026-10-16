@@ -5,6 +5,8 @@ description: Adopt or refresh Gori in an existing product repository using its t
 
 # Adopt an existing product
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 For a requested refresh of a product that already uses Gori, take the narrow path: read its `AGENTS.md` and current skill copies, compare them with the available Gori source checkout, and run the source installer's read-only plan. Reconcile only changed skills after reviewing product edits; never replace a differing installed copy wholesale. Repair a missing or stale `gori-mode` pointer in the product's existing `AGENTS.md`. Check canonical context, affected feature-map entries and verification recipes only where the refresh or current source exposes drift. Run the product's relevant checks and validate changed skill manifests; report any unavailable source, unresolved conflict or unproven behavior. Do not repeat the full adoption inventory or real user journey solely because skill text changed.
 
 For first adoption or a genuinely mismatched product workflow, follow the steps below.

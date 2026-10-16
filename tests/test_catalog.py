@@ -37,6 +37,11 @@ class CatalogTests(unittest.TestCase):
             frontmatter = body.split("---\n", 2)[1]
             self.assertRegex(frontmatter, rf"(?m)^name:\s*{re.escape(folder.name)}\s*$")
             self.assertRegex(frontmatter, r"(?m)^description:\s*\S+")
+            self.assertIn(
+                "Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).",
+                body,
+                folder.name,
+            )
             for document in folder.rglob("*.md"):
                 content = document.read_text()
                 for link in re.findall(r"\[[^]]+\]\(([^)]+)\)", content):

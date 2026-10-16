@@ -5,6 +5,8 @@ description: Turn settled decisions for a selected issue into an implementation-
 
 # Shape the selected task
 
+Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
+
 1. Read the original request, later decisions, existing issue, relevant domain context, source and neighboring tests. Confirm ownership and dependencies. Synthesize settled decisions; use [gori-grill](../gori-grill/SKILL.md) only for a genuinely unresolved product choice, and [gori-domain-model](../gori-domain-model/SKILL.md) only when terminology changes a rule.
 2. State the user's problem and every requested observable outcome. Trace affected callers and data flow; sketch the desired interface when architecture matters. Compare a simpler option and use a small experiment for an observable uncertainty.
 3. Preserve any unresolved decision explicitly; a tentative assumption is not approval to drop requested behavior. Do not restart the interview to write a spec.
