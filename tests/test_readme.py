@@ -13,6 +13,10 @@ import update_readme  # noqa: E402
 
 
 class ReadmeTests(unittest.TestCase):
+    def test_gtm_stays_available_without_public_catalog_promotion(self):
+        self.assertTrue((update_readme.SKILLS / "gtm" / "SKILL.md").is_file())
+        self.assertNotIn("skills/gtm/SKILL.md", update_readme.catalog())
+
     def test_stale_catalog_is_detected_without_writing_and_can_be_regenerated(self):
         current = update_readme.README.read_text(encoding="utf-8")
         stale = current.replace("skills/gori-mode/SKILL.md", "skills/old-mode/SKILL.md", 1)

@@ -1,8 +1,8 @@
 # Gori Skills
 
-**A practical workflow for shipping product work with Codex.** Gori Skills is a collection of agent skills that takes one task you choose from idea to reviewed, verified change. It follows the product repository's existing decisions, task ownership, and release gates instead of bringing its own backlog.
+**A distilled workflow for shipping product work with Codex.** Gori Skills is Pere Gregori's maintained adaptation of ideas from [Matt Pocock's engineering skills](https://github.com/mattpocock/skills), [pstack's verification skills](https://github.com/backnotprop/pstack), and [Lauren Tan's feature-map example](https://github.com/poteto/verification-skill-example). It brings those ideas into one route from decisions to implementation, review, and user-path proof, while following each product repository's own rules.
 
-Created and maintained by **[Pere Gregori](https://github.com/peregori)**, a developer building tools for more reliable product delivery. See [Pere's work on GitHub](https://github.com/peregori) or [get in touch on LinkedIn](https://www.linkedin.com/in/peregregori/).
+Built and maintained by **[Pere Gregori](https://peregregori.com/)** · [GitHub](https://github.com/peregori) · [MIT license](LICENSE). Gori is an independent adaptation, not an upstream release or endorsement.
 
 ## What it does
 
@@ -27,7 +27,7 @@ python3 gori-skills/scripts/install.py /absolute/path/to/product
 python3 gori-skills/scripts/install.py /absolute/path/to/product --apply
 ```
 
-The first command from the installer shows a read-only plan. `--apply` copies the core skills into the product's `.agents/skills/` directory. The installer refuses to overwrite a differing copy. Review and commit the installed files in the product repo. Use `--all` to include the optional skills, or pass an optional skill name to install it alone.
+The first command from the installer shows a read-only plan. `--apply` copies the core skills into the product's `.agents/skills/` directory. The installer refuses to overwrite a differing copy. Review and commit the installed files in the product repo. To add a listed optional skill, pass its name to the installer.
 
 Add this pointer to the product's existing `AGENTS.md` if it needs one:
 
@@ -39,7 +39,7 @@ If your product has the earlier `factory-workflow`, `matt-engineering`, or `prod
 
 ## Included skills
 
-The core workflow is installed by default. The other skills are available when requested.
+The core workflow is installed by default. Listed optional skills are available when requested.
 
 <!-- BEGIN GENERATED SKILLS -->
 
@@ -65,18 +65,17 @@ The core workflow is installed by default. The other skills are available when r
 
 | Skill | What it helps with |
 | --- | --- |
-| [`gtm`](skills/gtm/SKILL.md) | Define and refine ICPs, research reachable markets, qualify prospects, and develop signal-based outbound plays and content through a repeatable, project-independent GTM workflow. |
 | [`vercel-resend-default`](skills/vercel-resend-default/SKILL.md) | Record or verify a repo's chosen Vercel-managed Resend email setup when the user selects that provider path. |
 
 <!-- END GENERATED SKILLS -->
 
-## Ownership and attribution
+## Origins and license
 
-Gori is Pere Gregori's maintained adaptation and synthesis. Some skills draw on work by [Matt Pocock](https://github.com/mattpocock/skills), [Lauren Tan and pstack](https://github.com/backnotprop/pstack), and other credited authors. These are Gori versions, not upstream releases or endorsements. [Third-party notices](THIRD_PARTY_NOTICES.md) give the exact sources and licenses. The repository is [MIT licensed](LICENSE).
+The Gori-specific work is released under the [MIT license](LICENSE), copyright Pere Gregori. Adapted material keeps its upstream MIT notices and license copies. [Third-party notices](THIRD_PARTY_NOTICES.md) identify the sources used by each adapted skill, including the additional design sources. Please keep those notices when redistributing Gori.
 
 ## Keep this README current
 
-The skill table above is generated from the manifests under `skills/` and the installer's core list. After changing either, run:
+The public skill table above is generated from the selected manifests under `skills/` and the installer's core list. After changing either, run:
 
 ```sh
 python3 scripts/update_readme.py

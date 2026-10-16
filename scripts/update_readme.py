@@ -14,6 +14,7 @@ README = ROOT / "README.md"
 SKILLS = ROOT / "skills"
 START = "<!-- BEGIN GENERATED SKILLS -->"
 END = "<!-- END GENERATED SKILLS -->"
+CATALOG_EXCLUDED = frozenset({"gtm"})
 
 
 def skill_description(folder: Path) -> str:
@@ -42,9 +43,11 @@ def catalog() -> str:
     missing = set(CORE) - folders.keys()
     if missing:
         raise ValueError(f"Missing core skills: {', '.join(sorted(missing))}")
+    if CATALOG_EXCLUDED.intersection(CORE):
+        raise ValueError("Core skills cannot be excluded from the public catalog")
     groups = (
         ("Core workflow", CORE),
-        ("Optional", sorted(folders.keys() - set(CORE))),
+        ("Optional", sorted(folders.keys() - set(CORE) - CATALOG_EXCLUDED)),
     )
     lines = []
     for title, names in groups:
