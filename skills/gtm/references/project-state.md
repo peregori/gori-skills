@@ -13,13 +13,13 @@ Create only the files needed for actual work:
 | File | Ownership |
 | --- | --- |
 | `project.md` | Current goal and constraints, ICP matrix, source map, qualification/signal definitions, offer proof, channels, outcome sources, current stage and next step. |
-| `research.md` | Sourced prospect observations and derived fit/timing decisions, when research begins. No operational send history. |
+| `research.md` | Sourced prospect observations and derived fit/timing decisions, when research begins. No operational send history. With a lead adapter, prospect records live in the project and this file refers to their IDs. |
 | `ideas.md` | Outbound plays and other candidate ideas with stable IDs, evidence, decisions, and experiment definitions. Existing social ideas remain valid. |
 | `style.md` | Founder writing examples, approved preferences, avoided patterns, and pending proposals. |
 | `outcomes.csv` | Published social-post metrics only, preserving the existing schema. |
 | `runs/YYYY-MM-DD.md` | What was researched, recommended, selected, prepared, actually executed, observed, and left unresolved in that session. |
 
-Use useful headings in `project.md`, preserving existing sections: `Goal and operating rhythm`, `Audience`, `Offer and live proof`, `Market sources and qualification`, `Channels and cadence`, `Communities and rules`, `Trusted sources`, `Creator inspiration`, `Analytics inputs`, `Constraints`, and `Current state and next step`. Keep detailed observations in research/runs. Date material decisions and label their status; founder-selected audiences remain hypotheses until tested.
+If the project exposes a lead adapter ([lead-adapter.md](lead-adapter.md)), name its command and where it runs under `Market sources and qualification`. Use useful headings in `project.md`, preserving existing sections: `Goal and operating rhythm`, `Audience`, `Offer and live proof`, `Market sources and qualification`, `Channels and cadence`, `Communities and rules`, `Trusted sources`, `Creator inspiration`, `Analytics inputs`, `Constraints`, and `Current state and next step`. Keep detailed observations in research/runs. Date material decisions and label their status; founder-selected audiences remain hypotheses until tested.
 
 No project-specific posting quota, budget, language, CRM, or product assumption belongs in the reusable skill. Set channel cadence independently in the project and subordinate it to founder time and useful material. If newer instructions change priorities, archive the old commitment in a run and update the current brief without erasing history.
 
