@@ -1,6 +1,6 @@
 # Editorial review
 
-Writing quality is a separate pass after idea selection. The goal is a post the founder would plausibly publish, with one useful point and no claim the evidence cannot support.
+Writing quality is a separate pass after idea selection. The goal is a post the founder would plausibly publish, with one useful point and no claim the evidence cannot support. When the project names a `Writing tool`, review the draft it produced and suggest edits for the founder to make there, because rewriting elsewhere can lose what that tool learns from their edits.
 
 ## Learn the founder's writing
 
