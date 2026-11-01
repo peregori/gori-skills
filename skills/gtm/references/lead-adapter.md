@@ -17,9 +17,10 @@ An adapter is one command with these operations. Arguments and output follow the
 
 ## Rules
 
+- **Read and record on standing authority.** Where the brief's `Standing authority` allows it, use `list`, `show` and `export` without asking, and use `status` and `note` when the founder reports or decides something.
 - **Preview, then import.** Show the founder the rows you will import, with each row's source and fit evidence. Import only reviewed rows. A research shortlist is still not send-ready.
 - **No sending and no paid runs.** The adapter never sends email or starts paid data runs. Approved sends and data runs happen in the project's own panel, under the founder's approval and that product's safeguards. Do not look for a workaround.
 - **Respect suppression.** A suppressed or do-not-contact prospect is reported, never re-added under another key. Do not record personal details a do-not-contact entry removed.
 - **One record.** With an adapter, keep prospect records there and only research evidence and decisions in `research.md`, referring to the adapter's IDs. Do not keep a second contact list or send history in the workspace.
 - **Fail visibly.** If the adapter refuses (no database, wrong project, invalid rows), stop and report the message. Do not fall back to writing prospects into workspace files silently.
-- **Keep the project's boundaries.** The adapter runs on the founder's machine with that project's configuration. Never read or copy its credentials, and never point it at a database the brief does not name.
+- **Keep the project's boundaries.** The adapter runs on the founder's machine with that project's configuration. Never read or copy its credentials, and never point it at a database the brief does not name. Pass a connection only as an environment variable set inside the command, with every stream of the helper that produces it discarded, because some helpers print the secret on stderr. Never run that helper on its own to diagnose it.

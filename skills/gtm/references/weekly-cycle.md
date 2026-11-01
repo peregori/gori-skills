@@ -20,9 +20,9 @@ Do the research and synthesis before asking the founder to choose. Make a recomm
 
 Derive candidate angles from audience pain, practical methods, objections, founder opinions, proof, public conversations, and product work. Product changes are sources of ideas, not proof of live capabilities. Keep useful founder observations that do not fit a campaign; do not make every post an outbound pitch or release note.
 
-For each candidate give the audience problem, one point, evidence/source/date, why it matters, potential channel treatment, and missing proof. Compare with recent ideas to avoid repetition. Let the founder select angles before drafting a whole batch; a direct request to draft a particular angle already supplies that choice.
+The week's content output is a short list of post briefs, not finished posts. Each brief gives the audience problem, one point, the raw material (the founder's real story, fact, or observation), evidence/source/date, channel, and missing proof. Make the raw material usable as input to the project's `Writing tool`, so the founder can paste it in and let the tool write. Compare with recent ideas to avoid repetition. Agree the week's briefs in conversation.
 
-Use [editorial-review.md](editorial-review.md) for selected drafts and attach its quality verdict. Writing samples establish voice, not a quality ceiling. Test external techniques in original copy when relevant, without copying a creator's persona or treating their results as a forecast.
+Write finished copy only when the founder asks for a particular post or the project has no writing tool. Use [editorial-review.md](editorial-review.md) for a draft the founder shares or requests and attach its quality verdict. Writing samples establish voice, not a quality ceiling. Test external techniques in original copy when relevant, without copying a creator's persona or treating their results as a forecast.
 
 - **LinkedIn:** develop one useful argument or lesson with enough context to stand alone.
 - **X:** keep a short point short; use a thread only when each part advances the idea.
@@ -33,6 +33,6 @@ Propose timing only if useful for preparation; do not claim an optimal hour with
 
 ## End with an executable handoff
 
-Return a short weekly brief: what changed in our understanding, recommended/selected plays, prepared material, expected founder effort, known/proposed costs, and the measurement/review window. Name unresolved launch, offer, source, or execution prerequisites beside the affected material. Preparation can proceed while a product is unfinished; external-facing promises cannot assume blockers have cleared.
+Return a short weekly brief a person could act on: what changed in our understanding, the week's actions, its post briefs, expected founder effort, known/proposed costs, and the measurement/review window. Then keep the conversation open for changes. Name unresolved launch, offer, source, or execution prerequisites beside the affected material. Preparation can proceed while a product is unfinished; external-facing promises cannot assume blockers have cleared.
 
 Save evidence and decisions in the existing workspace. Preserve declined ideas and reasons. Record what was actually executed only when supported by a source or founder report. Do not create tasks/cards, send messages, spend, submit listings, or establish recurring jobs merely because a weekly plan mentions them. End with one exact next action for the next requested session.

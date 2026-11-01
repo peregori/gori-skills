@@ -35,7 +35,7 @@ Check current channel/provider rules before recommending an execution route. A c
 
 ## Derive other useful outputs
 
-- **Social content:** turn a researched pain, objection, practical method, or founder observation into candidate ideas; use [editorial-review.md](editorial-review.md) for chosen drafts. The founder publishes in their own tool.
+- **Social content:** turn a researched pain, objection, practical method, or founder observation into post briefs ([weekly-cycle.md](weekly-cycle.md)); use [editorial-review.md](editorial-review.md) for drafts the founder shares or requests. The founder writes and publishes in their own tool.
 - **Reddit/community participation:** verify the exact discussion and community rules, explain the useful contribution, and disclose relevant affiliation when needed. A community is not a generic promotion slot.
 - **Ads:** prepare the audience, promise, creative angle, destination, measurement, and proposed test cap. Label forecasts as hypotheses. No launch or spend occurs here.
 - **Directories:** research audience relevance, eligibility, submission rules/cost, and the listing angle. A suggested listing is not a submission or acquisition result.
