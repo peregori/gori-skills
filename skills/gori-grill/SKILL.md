@@ -12,4 +12,6 @@ Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
 3. Ask the smallest useful set of product questions. When a domain term changes the rule, use [gori-domain-model](../gori-domain-model/SKILL.md) to test edge cases and record the settled meaning. Preserve the user's answers and the reason for each decision in the existing issue or conversation. Do not re-ask settled questions or turn routine code choices into a pause.
 4. End when the intended user outcome, scope boundaries, dependencies and material failure paths are decided enough to state acceptance. Send the settled decisions to [gori-to-spec](../gori-to-spec/SKILL.md). If a decision remains external, name its owner and what independent work can proceed.
 
+For a new product or a direction with no selected issue, use [gori-brainstorm](../gori-brainstorm/SKILL.md) instead.
+
 The user owns task creation and Project status. Report when the issue is ready for the next column; do not move it.

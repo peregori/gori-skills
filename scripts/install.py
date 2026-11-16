@@ -14,11 +14,13 @@ SOURCE = Path(__file__).resolve().parent.parent / "skills"
 CORE = (
     "gori-mode",
     "gori-adopt",
+    "gori-brainstorm",
     "gori-triage",
     "gori-grill",
     "gori-domain-model",
     "gori-design",
     "gori-to-spec",
+    "gori-debug",
     "gori-implement",
     "gori-code-review",
     "gori-create-verification",
