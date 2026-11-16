@@ -12,11 +12,13 @@ class CatalogTests(unittest.TestCase):
         router = (SKILLS / "gori-mode" / "SKILL.md").read_text()
         for phase in (
             "gori-adopt",
+            "gori-brainstorm",
             "gori-triage",
             "gori-grill",
             "gori-domain-model",
             "gori-design",
             "gori-to-spec",
+            "gori-debug",
             "gori-implement",
             "gori-code-review",
             "gori-create-verification",

@@ -7,18 +7,21 @@ description: Route one selected repository task through triage, decisions, spec,
 
 Part of Gori Skills, maintained by [Pere Gregori](https://github.com/peregori).
 
-Read the repo's `AGENTS.md`, canonical context, selected request or issue, current source and Git state. The user selects work. If the repo uses a Project, match the selected issue to its exact card by issue URL or item ID, then read its **Status** and ownership; a thematic Phase field is not workflow status. If no card matches, say so and follow the repo's direct-task rule. Read issue labels according to the tracker contract; they do not override ownership. The board guides routing, while the issue, source, and repo gates define acceptance. Never create tasks or change Project cards or fields. Recommend status changes in the handoff for the user to apply.
+Read the repo's `AGENTS.md`, canonical context, selected request or issue, current source and Git state. Before a repo exists, start with `gori-brainstorm`. The user selects work. If the repo uses a Project, match the selected issue to its exact card by issue URL or item ID, then read its **Status** and ownership; a thematic Phase field is not workflow status. If no card matches, say so and follow the repo's direct-task rule. Read issue labels according to the tracker contract; they do not override ownership. The board guides routing, while the issue, source, and repo gates define acceptance. Never create tasks or change Project cards or fields. Recommend status changes in the handoff for the user to apply.
 
 For a nontrivial task, keep a short phase checklist in the existing issue, evidence location, or conversation. Record each phase as done, pending, blocked, or skipped with a reason. Load only the linked skill for the current phase. Continue an authorized task across phases even if the user has not moved its card. Recheck the original request at review; a slice or spec cannot silently narrow it.
 
 | Observed state or request | Route |
 | --- | --- |
+| New product, or a major direction whose intent, approach or architecture is still open | [gori-brainstorm](../gori-brainstorm/SKILL.md) to reach an approved design before any repo, issue or spec. It hands off to bootstrap and `gori-adopt`, or to `gori-to-spec` in an existing product. |
 | Existing product needs this workflow or a Gori refresh | [gori-adopt](../gori-adopt/SKILL.md). Use its narrow refresh path for installed skills; inventory the product on first adoption. |
 | UI product adoption or selected UI work | [gori-design](../gori-design/SKILL.md) to establish or read its design guidance, apply it to the affected screen, and reconcile it before release. Skip for products without a UI. |
 | Selected Inbox or otherwise untriaged issue or PR | [gori-triage](../gori-triage/SKILL.md) to check claim, ownership and readiness; then route by what is missing. Triage only the selected item. |
 | Needs Grill, unclear idea, or missing decisions | [gori-grill](../gori-grill/SKILL.md) to settle decisions, then [gori-to-spec](../gori-to-spec/SKILL.md) to record them. Skip grilling when the issue is already clear. |
 | Domain terms or relationships affect the task | [gori-domain-model](../gori-domain-model/SKILL.md) while adopting, grilling or specifying; preserve the repo's vocabulary location. |
+| Bug, failing check, incident or unexpected behavior whose cause is not proven | [gori-debug](../gori-debug/SKILL.md) to prove the root cause, then `gori-implement` for the fix. Diagnose production read-only. |
 | In Progress or implementation-ready task | [gori-implement](../gori-implement/SKILL.md). If a material decision is still missing, use `gori-grill` and `gori-to-spec` before that part. |
+| Review feedback from the user, a reviewer or a bot on the selected change | Evaluate it with the feedback rules in [gori-code-review](../gori-code-review/SKILL.md), then fix accepted items through `gori-implement`. |
 | In Review or completed implementation | [gori-code-review](../gori-code-review/SKILL.md) → [gori-maintain-verification](../gori-maintain-verification/SKILL.md) for affected maps and drivers → [gori-verify](../gori-verify/SKILL.md) → [gori-release](../gori-release/SKILL.md). Fix supported findings and repeat affected checks. |
 | Done | Treat as historical evidence. A new request or explicit reopening defines new work. |
 | Verification harness absent | [gori-create-verification](../gori-create-verification/SKILL.md) before claiming a real user-path pass. |

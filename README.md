@@ -1,6 +1,6 @@
 # Gori Skills
 
-**A distilled workflow for shipping product work with Codex.** Gori Skills is Pere Gregori's maintained adaptation of ideas from [Matt Pocock's engineering skills](https://github.com/mattpocock/skills), [pstack's verification skills](https://github.com/backnotprop/pstack), and [Lauren Tan's feature-map example](https://github.com/poteto/verification-skill-example). It brings those ideas into one route from decisions to implementation, review, and user-path proof, while following each product repository's own rules.
+**A distilled workflow for shipping product work with Codex.** Gori Skills is Pere Gregori's maintained adaptation of ideas from [Matt Pocock's engineering skills](https://github.com/mattpocock/skills), [pstack's verification skills](https://github.com/backnotprop/pstack), and [Lauren Tan's feature-map example](https://github.com/poteto/verification-skill-example), with brainstorming, debugging and review-feedback practice adapted from [Jesse Vincent's Superpowers](https://github.com/obra/superpowers). It brings those ideas into one route from decisions to implementation, review, and user-path proof, while following each product repository's own rules.
 
 Built and maintained by **[Pere Gregori](https://peregregori.com/)** · [GitHub](https://github.com/peregori) · [MIT license](LICENSE). Gori is an independent adaptation, not an upstream release or endorsement.
 
@@ -8,7 +8,7 @@ Built and maintained by **[Pere Gregori](https://peregregori.com/)** · [GitHub]
 
 Start with `gori-mode`. It reads the selected task and the repository's own `AGENTS.md`, then uses only the steps that task needs:
 
-1. Check the request against current product behavior and resolve missing decisions.
+1. For a new product or direction, brainstorm the intent and approach into an approved design. For selected work, check the request against current product behavior and resolve missing decisions.
 2. Write observable acceptance criteria, then implement in small, verifiable slices.
 3. Review the complete change against the original request and code quality.
 4. Update affected verification guidance, prove the user journey, and follow the repo's release gates.
@@ -49,11 +49,13 @@ The core workflow is installed by default. Listed optional skills are available 
 | --- | --- |
 | [`gori-mode`](skills/gori-mode/SKILL.md) | Route one selected repository task through triage, decisions, spec, implementation, review, user-path verification, and release gates. |
 | [`gori-adopt`](skills/gori-adopt/SKILL.md) | Adopt or refresh Gori in an existing product repository using its task authority, context, Git rules, and verification gates. |
+| [`gori-brainstorm`](skills/gori-brainstorm/SKILL.md) | Shape a new product or a major new direction into an approved design before any repo, issue or spec exists. |
 | [`gori-triage`](skills/gori-triage/SKILL.md) | Assess one user-selected existing issue or PR against current product behavior and route it to decisions, spec, implementation, or a concrete blocker. |
 | [`gori-grill`](skills/gori-grill/SKILL.md) | Resolve missing product decisions on a selected Inbox or Needs Grill issue before writing its spec. |
 | [`gori-domain-model`](skills/gori-domain-model/SKILL.md) | Resolve consequential domain vocabulary and relationships while adopting an existing repo or specifying a selected task. |
 | [`gori-design`](skills/gori-design/SKILL.md) | Establish and maintain product-specific UI design guidance, then check affected screens during selected UI work. |
 | [`gori-to-spec`](skills/gori-to-spec/SKILL.md) | Turn settled decisions for a selected issue into an implementation-ready spec with observable acceptance and proof. |
+| [`gori-debug`](skills/gori-debug/SKILL.md) | Find the root cause of a bug, failing check, incident or unexpected behavior before any fix is written. |
 | [`gori-implement`](skills/gori-implement/SKILL.md) | Implement one selected task in verifiable vertical slices, using bug reproduction and behavior tests where useful. |
 | [`gori-code-review`](skills/gori-code-review/SKILL.md) | Review a selected task's full diff against the original request and repository standards on separate axes. |
 | [`gori-create-verification`](skills/gori-create-verification/SKILL.md) | Create a repo-local executable user-path verification contract when an existing product has none. |
